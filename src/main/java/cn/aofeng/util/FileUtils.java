@@ -240,8 +240,7 @@ public class FileUtils {
 		ZipFile zipFile = null;
 		try {
 			zipFile = new ZipFile(srcZipFile);
-			@SuppressWarnings("unchecked")
-			Enumeration entrys = zipFile.entries();
+			Enumeration<? extends ZipEntry> entrys = zipFile.entries();
 			
 			ZipEntry entry = null;
 			while (entrys.hasMoreElements()) {

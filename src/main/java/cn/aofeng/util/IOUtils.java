@@ -102,8 +102,7 @@ public class IOUtils {
 	 *
 	 * @param queue
 	 */
-	@SuppressWarnings("unchecked")
-	public static void close(Queue queue) {
+	public static void close(Queue<?> queue) {
 		if (null != queue) {
 			while(null != queue.poll()) {
 
