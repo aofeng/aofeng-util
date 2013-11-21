@@ -8,7 +8,7 @@ import junit.framework.TestCase;
 /**
  * 加解密类测试.
  *
- * @author 聂勇 <a href="mailto:nieyong@asiainfo.com">nieyong@asiainfo.com</a>
+ * @author 聂勇 <a href="mailto:aofengblog@163.com">aofengblog@163.com</a>
  */
 public class EncryptCodeUtilsTest extends TestCase {
 
