@@ -44,11 +44,6 @@
                 <include name="**/*"/>
             </fileset>
         </copy>
-        <copy todir="${build_dir}/${package_name}">
-            <fileset dir="${basedir}/resources">
-                <include name="**/*"/>
-            </fileset>
-        </copy>
         <jar destfile="${dist_dir}/${package_name}.jar" basedir="${build_dir}/${package_name}">
             <manifest>
                 <attribute name="Built-By" value="NieYong" />
