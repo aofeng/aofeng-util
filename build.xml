@@ -40,7 +40,7 @@
             </fileset>
         </copy>
         <copy todir="${build_dir}/${package_name}">
-            <fileset dir="${basedir}/config">
+            <fileset dir="${basedir}/resources">
                 <include name="**/*"/>
             </fileset>
         </copy>
@@ -49,7 +49,7 @@
                 <attribute name="Built-By" value="NieYong" />
                 <attribute name="Implementation-Vendor" value="NieYong" />
                 <attribute name="Implementation-Title" value="NieYong" />
-                <attribute name="Implementation-Version" value="1.0.0" />
+                <attribute name="Implementation-Version" value="${project_version}" />
             </manifest>
         </jar>
     </target>
@@ -60,7 +60,7 @@
                 <attribute name="Built-By" value="NieYong" />
                 <attribute name="Implementation-Vendor" value="NieYong" />
                 <attribute name="Implementation-Title" value="NieYong" />
-                <attribute name="Implementation-Version" value="1.0.0" />
+                <attribute name="Implementation-Version" value="${project_version}" />
             </manifest>
         </jar>
     </target>
