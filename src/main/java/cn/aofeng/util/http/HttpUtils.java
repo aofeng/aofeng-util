@@ -5,12 +5,16 @@ package cn.aofeng.util.http;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.params.HttpClientParams;
 
 import cn.aofeng.util.Proxy;
@@ -46,11 +50,24 @@ public class HttpUtils {
         return HttpUtils.getInputStream(getMethod, httpContentCharset);
     }
 
-    public static InputStream getInputStream(String httpUrl, String params, String httpContentCharset) 
+    public static InputStream getInputStream(String httpUrl, String httpContentCharset, String params) 
     	throws HttpException, IOException {
-    	HttpMethod getMethod = new GetMethod(httpUrl);
-    	getMethod.setQueryString(params);
-    	return HttpUtils.getInputStream(getMethod, httpContentCharset);
+    	return getInputStream(httpUrl, httpContentCharset, params, null);
+    }
+    
+    public static InputStream getInputStream(String httpUrl, String httpContentCharset, String params, Map<String, String> headers) 
+            throws HttpException, IOException {
+        HttpMethod method = new PostMethod(httpUrl);
+        method.setQueryString(params);
+        if (null != headers && !headers.isEmpty()) {
+            Iterator<Entry<String, String>> iterator =  headers.entrySet().iterator();
+            while (iterator.hasNext()) {
+                Entry<String, String> entry = iterator.next();
+                method.setRequestHeader(entry.getKey(), entry.getValue());
+            }
+        }
+        
+        return getInputStream(method, httpContentCharset);
     }
 
     static InputStream getInputStream(HttpMethod httpMethod, String httpContentCharset) throws HttpException, IOException {
